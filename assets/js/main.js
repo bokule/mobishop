@@ -46,8 +46,8 @@ $(document).ready(function() {
 
     function addActiveClass() {
         var currentPage = location.pathname;
-        console.log(currentPage);
-        if(currentPage == '/') currentPage = '/index.html';
+        var pageRegExp = /[(\.html)|(\.php)]$/;
+        if(!currentPage.match(pageRegExp)) currentPage = '/index.html';
         currentPage = currentPage.substring(currentPage.lastIndexOf('/') + 1, currentPage.length);
         $('#nav ul li a, #sideNavContent ul li a').each(function() {
             $this = $(this);
