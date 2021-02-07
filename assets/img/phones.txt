@@ -1,0 +1,24 @@
+APPLE iPhone XS 512GB Silver MT9M2SE/A, ios, apple, 1500
+APPLE iPhone 11 Pro Max 64GB Green MWHH2SE/A, ios, apple, 1350
+APPLE iPhone 11 Pro Max 256GB Space gray, ios, apple, 1600
+APPLE iPhone 11 Pro Max 256GB Gold, ios, apple, 1600
+APPLE iPhone SE 128GB Red, ios, apple, 650
+APPLE iPhone 12 64GB Blue, ios, apple, 1100
+HONOR 10 64GB Phantom Green 7800429, android, honor, 350
+HONOR 20 128GB Midnight black 51093VCM, android, honor, 400
+HONOR 7S 16GB Black 51094ABU, android, honor, 90
+HONOR 8A 32GB Black 51093WGU, android, honor, 140
+HONOR 9A 64GB Black, android, honor, 170
+HONOR 9S 32GB Black, android, honor, 100
+HUAWEI P40 Pro 256GB Black, android, huawei, 1200
+HUAWEI Y5p 32GB Midnight black, android, huawei, 110
+HUAWEI Y6p 64GB Emerald Green, android, huawei, 190
+HUAWEI P30 Lite 256GB Midnight Black, android, huawei, 350
+HUAWEI P30 Lite 256GB Breathing Crystal, android, huawei, 350
+HUAWEI P Smart (2021) 128GB Blush gold, android, huawei, 240
+SAMSUNG GALAXY A20e 32GB DS Orange SM-A202FZODSEE, android, samsung, 410
+SAMSUNG GALAXY Z FLIP 256GB Mirror black SM-F700FZPDSEE, android, samsung, 1200
+SAMSUNG GALAXY A21s 32GB Blue SM-A217FZBNEUF, android, samsung, 200
+SAMSUNG GALAXY S20 Ultra Cloud White, android, samsung, 1400
+SAMSUNG GALAXY NOTE 20 Mystic Grey SM-N980FZAGEUF, android, samsung, 1100
+SAMSUNG GALAXY A20s 32GB Blue SM-A207FZBDEUF, android, samsung, 200

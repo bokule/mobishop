@@ -1,0 +1,192 @@
+[{
+    "id": 1,
+    "name": "APPLE iPhone XS 512GB Silver MT9M2SE/A",
+    "image": "iPhone_XS_512GB_Silver.png",
+    "os": 2,
+    "brand": 1,
+    "price": 1500
+},
+{
+    "id": 2,
+    "name": "HONOR 10 64GB Phantom Green 7800429",
+    "image": "HONOR_10_64GB_Phantom_Green.png",
+    "os": 1,
+    "brand": 2,
+    "price": 350
+},
+{
+    "id": 3,
+    "name": "APPLE iPhone 11 Pro Max 256GB Space gray",
+    "image": "iPhone_11_Pro_Max_256GB_Space_gray.png",
+    "os": 2,
+    "brand": 1,
+    "price": 1600
+},
+{
+    "id": 4,
+    "name": "HUAWEI Y5p 32GB Midnight Black",
+    "image": "HUAWEI_Y5p_32GB_Midnight_black.png",
+    "os": 1,
+    "brand": 3,
+    "price": 110
+},
+{
+    "id": 5,
+    "name": "HUAWEI P30 Lite 256GB Breathing Crystal",
+    "image": "HUAWEI_P30_Lite_256GB_Breathing_Crystal.png",
+    "os": 1,
+    "brand": 3,
+    "price": 350
+},
+{
+    "id": 6,
+    "name": "APPLE iPhone 12 64GB Blue",
+    "image": "iPhone_12_64GB_Blue.png",
+    "os": 2,
+    "brand": 1,
+    "price": 1100
+},
+{
+    "id": 7,
+    "name": "APPLE iPhone 11 Pro Max 64GB Green MWHH2SE/A",
+    "image": "iPhone_11_Pro_Max_64GB_Green.png",
+    "os": 2,
+    "brand": 1,
+    "price": 1350
+},
+{
+    "id": 8,
+    "name": "HONOR 20 128GB Midnight black 51093VCM",
+    "image": "HONOR_20_128GB_Midnight_black.png",
+    "os": 1,
+    "brand": 2,
+    "price": 400
+},
+{
+    "id": 9,
+    "name": "SAMSUNG GALAXY Z FLIP 256GB Mirror Black SM-F700FZPDSEE",
+    "image": "SAMSUNG_GALAXY_Z_FLIP_256GB_Mirror_black.png",
+    "os": 1,
+    "brand": 4,
+    "price": 1200
+},
+{
+    "id": 10,
+    "name": "HONOR 8A 32GB Black 51093WGU",
+    "image": "HONOR_8A_32GB_Black.png",
+    "os": 1,
+    "brand": 2,
+    "price": 140
+},
+{
+    "id": 11,
+    "name": "HONOR 9A 64GB Black",
+    "image": "HONOR_9A_64GB_Black.png",
+    "os": 1,
+    "brand": 2,
+    "price": 170
+},
+{
+    "id": 12,
+    "name": "SAMSUNG GALAXY A20s 32GB Blue SM-A207FZBDEUF",
+    "image": "SAMSUNG_GALAXY_A20s_32GB_Blue.png",
+    "os": 1,
+    "brand": 4,
+    "price": 200
+},
+{
+    "id": 13,
+    "name": "HUAWEI P40 Pro 256GB Black",
+    "image": "HUAWEI_P40_Pro_256GB_Black.png",
+    "os": 1,
+    "brand": 3,
+    "price": 1200
+},
+{
+    "id": 14,
+    "name": "APPLE iPhone 11 Pro Max 256GB Gold",
+    "image": "iPhone_11_Pro_Max_256GB_Gold.png",
+    "os": 2,
+    "brand": 1,
+    "price": 1600
+},
+{
+    "id": 15,
+    "name": "HUAWEI Y6p 64GB Emerald Green",
+    "image": "HUAWEI_Y6p_64GB_Emerald_Green.png",
+    "os": 1,
+    "brand": 3,
+    "price": 190
+},
+{
+    "id": 16,
+    "name": "HUAWEI P30 Lite 256GB Midnight Black",
+    "image": "HUAWEI_P30_Lite_256GB_Midnight_Black.png",
+    "os": 1,
+    "brand": 3,
+    "price": 350
+},
+{
+    "id": 17,
+    "name": "APPLE iPhone SE 128GB Red",
+    "image": "iPhone_SE_128GB_Red.png",
+    "os": 2,
+    "brand": 1,
+    "price": 650
+},
+{
+    "id": 18,
+    "name": "SAMSUNG GALAXY S20 Ultra Cloud White",
+    "image": "SAMSUNG_GALAXY_S20_Ultra_Cloud_White.png",
+    "os": 1,
+    "brand": 4,
+    "price": 1400
+},
+{
+    "id": 19,
+    "name": "SAMSUNG GALAXY A20e 32GB DS Orange SM-A202FZODSEE",
+    "image": "SAMSUNG_GALAXY_A20e_32GB_DS_Orange.png",
+    "os": 1,
+    "brand": 4,
+    "price": 410
+},
+{
+    "id": 20,
+    "name": "HONOR 7S 16GB Black 51094ABU",
+    "image": "HONOR_7S_16GB_Black.png",
+    "os": 1,
+    "brand": 2,
+    "price": 90
+},
+{
+    "id": 21,
+    "name": "SAMSUNG GALAXY A21s 32GB Blue SM-A217FZBNEUF",
+    "image": "SAMSUNG_GALAXY_A21s_32GB_Blue.png",
+    "os": 1,
+    "brand": 4,
+    "price": 200
+},
+{
+    "id": 22,
+    "name": "HUAWEI P Smart (2021) 128GB Blush Gold",
+    "image": "HUAWEI_P_Smart_(2021)_128GB_Blush_gold.png",
+    "os": 1,
+    "brand": 3,
+    "price": 240
+},
+{
+    "id": 23,
+    "name": "SAMSUNG GALAXY NOTE 20 Mystic Grey SM-N980FZAGEUF",
+    "image": "SAMSUNG_GALAXY_NOTE_20_Mystic_Grey.png",
+    "os": 1,
+    "brand": 4,
+    "price": 1100
+},
+{
+    "id": 24,
+    "name": "HONOR 9S 32GB Black",
+    "image": "HONOR_9S_32GB_Black.png",
+    "os": 1,
+    "brand": 2,
+    "price": 100
+}]

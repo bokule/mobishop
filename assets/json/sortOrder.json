@@ -1,0 +1,16 @@
+[{
+    "id": 1,
+    "name": "Brand A-Z"
+},
+{
+    "id": 2,
+    "name": "Brand Z-A"
+},
+{
+    "id": 3,
+    "name": "Price Ascending"
+},
+{
+    "id": 4,
+    "name": "Price Descending"
+}]

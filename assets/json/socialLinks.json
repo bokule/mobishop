@@ -1,0 +1,24 @@
+[{
+    "id": 1,
+    "name": "Facebook",
+    "icon": "fab fa-facebook",
+    "href": "https://www.facebook.com/bojan.maksimovic.908"
+},
+{
+    "id": 2,
+    "name": "Instagram",
+    "icon": "fab fa-instagram",
+    "href": "https://www.instagram.com/bojanm___/"
+},
+{
+    "id": 3,
+    "name": "Twitter",
+    "icon": "fab fa-twitter",
+    "href": "https://twitter.com/bojanm_"
+},
+{
+    "id": 4,
+    "name": "Documentation",
+    "icon": "fas fa-file",
+    "href": "assets/documentation/documentation.pdf"
+}]

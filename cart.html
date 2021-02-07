@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mobi Shop | Cart</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="keywords" content="Mobi Shop, smartphones, cell phones, Checkout, Cart"/>
+        <meta name="description" content="Mobi Shop gives you a chance to quickly and easily find the phone you want and have it delivered to your home in no time..."/>
+        <link rel="icon" href="assets/icon/favicon.ico"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <header id="header">
+            <div class="container">
+                <div id="logo">
+                    <a href="index.html">
+                        <h1 class="font-xl">MS</h1>
+                    </a>
+                </div>
+                <div id="navAndCart">
+                    <div id="nav">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div id="cart">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart font-medium"></i>
+                        </a>
+                        <label id="cartNumber" class="font-xs"></label>
+                    </div>
+                    <div id="hamburger">
+                        <a href="#">
+                            <i class="fas fa-bars font-large"></i>
+                        </a>
+                    </div>
+                    <div id="sideNav">
+                        <div class="cover">
+                            <div id="sideNavContent">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="cartMain" class="bgWhite main">
+            <div class="container">
+                <div id="cartList">
+                    <table class="font-small" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td class="colDeviceName">Device name</td>
+                                <td class="colPrice">Price</td>
+                                <td class="colQuantity">Quantity</td>
+                                <td class="colRemove"><i class="fas fa-trash"></i></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="checkout">
+                    <form>
+                        <div class="formGroup">
+                            <label for="tbName" class="font-small">Full name:</label>
+                            <input type="text" name="tbName" id="tbName" class="textField font-small" autocomplete="off"/>
+                            <span class="errorMessage">
+                                <ul class="font-small">
+                                    <li>- A name cannot have less than 3 characters</li>
+                                    <li>- Has to be at least 2 words</li>
+                                    <li>- Each word must be capitalized</li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="formGroup">
+                            <label for="tbEmail" class="font-small">Email:</label>
+                            <input type="text" name="tbEmail" id="tbEmail" class="textField font-small" autocomplete="off"/>
+                            <span class="errorMessage font-small">examplename@example.com</span>
+                        </div>
+                        <div class="formGroup">
+                            <label for="tbAddress" class="font-small">Address:</label>
+                            <input type="text" name="tbAddress" id="tbAddress" class="textField font-small" autocomplete="off"/>
+                            <span class="errorMessage font-small">[Street Name] [Home Number]/[Apartment Number]</span>
+                        </div>
+                    </form>
+                    <br/>
+                    <span id="totalPrice" class="font-small">Total Price: <span class="bold"></span></span>
+                    <br/>
+                    <button id="btnCheckout" class="font-small btnPrimary">Checkout</button>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="container">
+                <div id="sitemap">
+                    <ul>
+                    </ul>
+                </div>
+                <div id="social">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <span id="copyright" class="font-xs">&copy;2021 Bojan Maksimović</span>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/formValidation.js"></script>
+        <script type="text/javascript" src="assets/js/cart.js"></script>
+    </body>
+</html>

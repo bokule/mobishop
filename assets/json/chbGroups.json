@@ -1,0 +1,34 @@
+[{
+    "id": 1,
+    "idAttr": "chbGroupOS",
+    "label": "OS",
+    "values": [{
+        "id": 1,
+        "name": "Android"
+    },
+    {
+        "id": 2,
+        "name": "iOS"
+    }]
+},
+{
+    "id": 2,
+    "idAttr": "chbGroupBrand",
+    "label": "Brand",
+    "values": [{
+        "id": 1,
+        "name": "Apple"
+    },
+    {
+        "id": 2,
+        "name": "Honor"
+    },
+    {
+        "id": 3,
+        "name": "Huawei"
+    },
+    {
+        "id": 4,
+        "name": "Samsung"
+    }]
+}]

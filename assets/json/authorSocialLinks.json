@@ -1,0 +1,18 @@
+[{
+    "id": 1,
+    "icon": "fab fa-facebook",
+    "href": "https://www.facebook.com/bojan.maksimovic.908",
+    "color": "#3d6eff"
+},
+{
+    "id": 2,
+    "icon": "fab fa-instagram",
+    "href": "https://www.instagram.com/bojanm___/",
+    "color": "#ff24f8"
+},
+{
+    "id": 3,
+    "icon": "fab fa-twitter",
+    "href": "https://twitter.com/bojanm_",
+    "color": "#17e4ff"
+}]
