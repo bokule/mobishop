@@ -12,22 +12,11 @@ $(document).ready(function() {
 
     var sliderImages;
 
-    $.ajax({
-        url: "assets/json/sliderImages.json",
-        method: "get",
-        dataType: "json",
-        success: function(data) {
-            sliderImages = data;
-            printSliderImages();
-        },
-        error: function(errorMsg) {
-            console.log(errorMsg);
-        }
-    });
+    loadJson('sliderImages', function(output) {sliderImages = output;}, printSliderImages);
 
-    function printSliderImages() {
-        for(let i in sliderImages) {
-            $('#slider').append($(`<div id="slide${i}" class="slide"></div>`).css('background-image', `url('assets/img/${sliderImages[i].image}.jpg')`));
+    function printSliderImages(data) {
+        for(let i in data) {
+            $('#slider').append($(`<div id="slide${i}" class="slide"></div>`).css('background-image', `url('assets/img/${data[i].image}.jpg')`));
         }
         $('.slide:not(:first)').hide();
         setInterval(changeSlide, sliderInterval);

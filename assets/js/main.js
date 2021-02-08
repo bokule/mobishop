@@ -1,43 +1,34 @@
-var cartDevices = [{
-    "id": 1,
-    "name": "Phone 1",
-    "price": 140,
-    "quantity": 1
-},
-{
-    "id": 2,
-    "name": "Phone 2",
-    "price": 230,
-    "quantity": 2
-},
-{
-    "id": 3,
-    "name": "Phone 3",
-    "price": 190,
-    "quantity": 1
-}];
+cartDevices = [];
 
 $(document).ready(function() {
-    // NAV LINKS
+    //LOCAL STORAGE
 
+    loadLocalStorage();
+
+    function loadLocalStorage() {
+        if(localStorage.length > 0) {
+            var cart = localStorage.getItem('cart');
+            cart = cart.split('\t');
+            for(let el of cart) {
+                var singleItem = el.split('\r');
+                cartDevices.push({
+                    "id": Number(singleItem[0]),
+                    "name": singleItem[1],
+                    "price": Number(singleItem[2]),
+                    "quantity": Number(singleItem[3])
+                });
+            }
+        }
+    }
+
+    // NAV LINKS
     var pageLinks;
 
-    $.ajax({
-        url: "assets/json/pageLinks.json",
-        method: "get",
-        dataType: "json",
-        success: function(data) {
-            pageLinks = data;
-            printPageLinks();
-        },
-        error: function(errorMsg) {
-            console.log(errorMsg);
-        }
-    });
+    loadJson('pageLinks', function(output) {pageLinks = output;}, printPageLinks);
 
-    function printPageLinks() {
-        for(let i in pageLinks) {
-            $('#nav ul, #sideNavContent ul, #sitemap ul').append(`<li><a href="${pageLinks[i].href}" class="font-small">${pageLinks[i].name}</a></li>`);
+    function printPageLinks(data) {
+        for(let i in data) {
+            $('#nav ul, #sideNavContent ul, #sitemap ul').append(`<li><a href="${data[i].href}" class="font-small">${data[i].name}</a></li>`);
         }
         addActiveClass();
     }
@@ -89,22 +80,11 @@ $(document).ready(function() {
 
     var socialLinks;
 
-    $.ajax({
-        url: "assets/json/socialLinks.json",
-        method: "get",
-        dataType: "json",
-        success: function(data) {
-            socialLinks = data;
-            printSocialLinks();
-        },
-        error: function(errorMsg) {
-            console.log(errorMsg);
-        }
-    });
+    loadJson('socialLinks', function(output) {socialLinks = output;}, printSocialLinks);
 
-    function printSocialLinks() {
-        for(let i in socialLinks) {
-            $('#social ul').append(`<li><a href="${socialLinks[i].href}" class="font-small" target="_blank"><i class="${socialLinks[i].icon}"></i><span class="socialText">${socialLinks[i].name}</span></a></li>`);
+    function printSocialLinks(data) {
+        for(let i in data) {
+            $('#social ul').append(`<li><a href="${data[i].href}" class="font-small" target="_blank"><i class="${data[i].icon}"></i><span class="socialText">${data[i].name}</span></a></li>`);
         }
     }
 
@@ -128,6 +108,39 @@ $(document).ready(function() {
         }
     });
 });
+
+// AJAX
+
+function loadJson(fileName, handleData, func) {
+    $.ajax({
+        url: `assets/json/${fileName}.json`,
+        method: "get",
+        dataType: "json",
+        success: function(data) {
+            handleData(data);
+            if(typeof(func) == 'function') func(data);
+        },
+        error: function(errorMsg) {
+            console.log(errorMsg);
+        }
+    });
+}
+
+// LOCAL STORAGE
+function updateLocalStorage() {
+    if(cartDevices.length > 0) {
+        var text = '';
+        var attributes = ['id', 'name', 'price', 'quantity'];
+        for(let i in cartDevices) {
+            if(i != 0) text += '\t';
+            for(let j in attributes) {
+                if(j != 0) text += '\r';
+                text += `${cartDevices[i][attributes[j]]}`;
+            }
+        }
+        localStorage.setItem('cart', text);
+    } else localStorage.removeItem('cart');
+}
 
 // CART NUMBER
 

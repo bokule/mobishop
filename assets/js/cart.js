@@ -18,9 +18,15 @@ $(document).ready(function() {
             }
         }
         if($(this).hasClass('btnIncrease')) {
-            if(cartDevices[index].quantity < 10) cartDevices[index].quantity++;
+            if(cartDevices[index].quantity < 10) {
+                cartDevices[index].quantity++;
+                updateLocalStorage();
+            }
         } else {
-            if(cartDevices[index].quantity > 1) cartDevices[index].quantity--;
+            if(cartDevices[index].quantity > 1) {
+                cartDevices[index].quantity--;
+                updateLocalStorage();
+            }
         }
         $(this).siblings('.quantity').html(cartDevices[index].quantity);
         printCartNumber();
@@ -44,6 +50,7 @@ $(document).ready(function() {
 
     function removeDevice(index) {
         cartDevices.splice(index, 1);
+        updateLocalStorage();
     }
 
     // TOTAL PRICE
@@ -98,6 +105,7 @@ $(document).ready(function() {
 
     function emptyCart() {
         cartDevices = [];
+        updateLocalStorage();
         $('#cartList tbody').html('');
         printTotalPrice();
         printCartNumber();

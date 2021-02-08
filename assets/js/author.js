@@ -3,21 +3,10 @@ $(document).ready(function() {
 
     var authorSocialLinks;
 
-    $.ajax({
-        url: "assets/json/authorSocialLinks.json",
-        method: "get",
-        dataType: "json",
-        success: function(data) {
-            authorSocialLinks = data;
-            printAuthorSocialLinks();
-        },
-        error: function(errorMsg) {
-            console.log(errorMsg);
-        }
-    });
+    loadJson('authorSocialLinks', function(output) {authorSocialLinks = output;}, printAuthorSocialLinks);
 
-    function printAuthorSocialLinks() {
-        for(let el of authorSocialLinks) {
+    function printAuthorSocialLinks(data) {
+        for(let el of data) {
             $('#authorSocial ul').append(`<li><a href="${el.href}" class="font-small" target="_blank"><i class="${el.icon}" style="color: ${el.color};"></i></a></li>`);
         }
     }
