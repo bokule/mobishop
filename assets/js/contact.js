@@ -1,8 +1,6 @@
 $(document).ready(function() {
     // FORM VALIDATION
-
     // NAME
-
     var regExpName = /^[A-ZŠĐČĆŽ][a-zšđčćž]{2,}(\s[A-ZŠĐČĆŽ][a-zšđčćž]{2,})*$/;
     var $tbName = $('#tbName');
     $tbName.blur(checkName);
@@ -11,7 +9,6 @@ $(document).ready(function() {
     }
 
     // EMAIl
-
     var regExpEmail = /^[a-z-_\.]+@([\w-_]{2,}\.)+[a-z]{2,}$/;
     var $tbEmail = $('#tbEmail');
     $tbEmail.blur(checkEmail);
@@ -20,7 +17,6 @@ $(document).ready(function() {
     }
 
     // MESSAGE
-
     var $tbMessage = $('#tbMessage');
     function checkMessage() {
         var numberOfSpaces = tbMessage.value.replace(/[^\s]/mg, "").length;
@@ -33,7 +29,6 @@ $(document).ready(function() {
     $tbMessage.blur(checkMessage);
 
     // FORM SUBMITION
-
     var checkFunctions = [checkName, checkEmail, checkMessage];
     var successMessage = 'Sent! Expect an answer from one of our agents soon.';
     $('#btnSend').click(function() {

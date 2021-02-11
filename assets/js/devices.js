@@ -1,9 +1,8 @@
 $(document).ready(function() {
     // SORT ORDER
-
-    var sortOrder;
-
-    loadJson('sortOrder', function(output) {sortOrder = output;}, fillSortOrderDdl);
+    loadJson('sortOrder', function(output) {
+        fillSortOrderDdl(output);
+    });
     
     var $ddlSortOrder = $('#ddlOrder');
     $ddlSortOrder.append('<option value="0">Sort Order</option>');
@@ -15,36 +14,32 @@ $(document).ready(function() {
     }
 
     // CBECKBOX GROUPS
+    var operatingSystems;
+
+    loadJson('operatingSystems', function(output) {
+        operatingSystems = output;
+        fillChbGroup('OS', output, 'chbOS');
+    });
 
     var brands
 
-    loadJson('brands', function(output) {brands = output;});
+    loadJson('brands', function(output) {
+        brands = output;
+        fillChbGroup('Brand', output, 'chbBrand');
+    });
 
-    var operatingSystems;
-
-    loadJson('operatingSystems', function(output) {operatingSystems = output;});
-
-    var chbGroups;
-
-    loadJson('chbGroups', function(output) {chbGroups = output;}, fillAllChbGroups);
-
-    function fillChbGroup(chbGroup) {
-        var $chbGroup = $(`#${chbGroup.idAttr}`);
-        $chbGroup.append(`<label class="font-small">${chbGroup.label}:</label>`);
-        for(let val of chbGroup.values) {
-            $chbGroup.append(`<div class="checkboxGroup"><input type="checkbox" name="chb${val.name}" id="chb${val.name}" value="${val.id}" class="chb${chbGroup.label}"/><label for="chb${val.name}" class="font-small">${val.name}</label></div>`);
+    function fillChbGroup(label, values, chbClass) {
+        var $chbGroup = $(`<div class="formGroup"><label class="font-small">${label}:</label><div>`);
+        for(let val of values) {
+            $chbGroup.append(`<div class="checkboxGroup"><input type="checkbox" name="chb${val.name}" id="chb${val.name}" value="${val.id}" class="chb${label}"/><label for="chb${val.name}" class="font-small">${val.name}</label></div>`);
         }
-    }
-
-    function fillAllChbGroups(data) {
-        for(let el of data) {
-            fillChbGroup(el);
-        }
-        addFilteringEvents();
+        $('#chbGroups').append($chbGroup);
+        $(`.${chbClass}`).change(function() {
+            printDevices(devices);
+        });
     }
 
     // PRICE RANGE
-
     function printPriceRangeValue() {
         $('#priceRange').html(`< ${$('#rnPrice').val()}€`);
     }
@@ -54,14 +49,15 @@ $(document).ready(function() {
     $('#rnPrice').on('input', printPriceRangeValue);
 
     // DEVICES
-
     var devices;
 
-    loadJson('devices', function(output) {devices = output;}, printDevices);
+    loadJson('devices', function(output) {
+        devices = output;
+        printDevices(output);
+    });
 
     function printDevices(data) {
         // FILTERING
-
         data = searchFilter(data);
         data = sortOrderFilter(data);
         data = checkboxFiltering(data, $('.chbOS'), 'os');
@@ -159,14 +155,12 @@ $(document).ready(function() {
 
     // FILTERING
 
-    function addFilteringEvents() {
-        $('#tbSearch').keyup(function() {
-            printDevices(devices);
-        });
-        $('.chbOS, .chbBrand, #ddlOrder, #rnPrice').change(function() {
-            printDevices(devices);
-        });
-    }
+    $('#tbSearch').keyup(function() {
+        printDevices(devices);
+    });
+    $('#ddlOrder, #rnPrice').change(function() {
+        printDevices(devices);
+    });
 
     // ADDING TO CART
 

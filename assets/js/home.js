@@ -1,7 +1,6 @@
 $(document).ready(function() {
     // TRANSPARENT HEADER
-
-    $('#header').addClass('bgTransparent');
+    if($(document).scrollTop() < $('#header').outerHeight()) $('#header').addClass('bgTransparent');
 
     $(document).scroll(function() {
         if($(document).scrollTop() > $('#header').outerHeight()) $('#header').removeClass('bgTransparent');
@@ -9,10 +8,12 @@ $(document).ready(function() {
     });
 
     // SLIDESHOW
-
     var sliderImages;
 
-    loadJson('sliderImages', function(output) {sliderImages = output;}, printSliderImages);
+    loadJson('sliderImages', function(output) {
+        sliderImages = output;
+        printSliderImages(output);
+    });
 
     function printSliderImages(data) {
         for(let i in data) {

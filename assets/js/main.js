@@ -2,7 +2,6 @@ cartDevices = [];
 
 $(document).ready(function() {
     //LOCAL STORAGE
-
     loadLocalStorage();
 
     function loadLocalStorage() {
@@ -22,9 +21,9 @@ $(document).ready(function() {
     }
 
     // NAV LINKS
-    var pageLinks;
-
-    loadJson('pageLinks', function(output) {pageLinks = output;}, printPageLinks);
+    loadJson('pageLinks', function(output) {
+        printPageLinks(output);
+    });
 
     function printPageLinks(data) {
         for(let i in data) {
@@ -34,7 +33,6 @@ $(document).ready(function() {
     }
 
     // ACTIVE CLASS
-
     function addActiveClass() {
         var currentPage = location.pathname;
         var pageRegExp = /[(\.html)|(\.php)]$/;
@@ -52,11 +50,9 @@ $(document).ready(function() {
     }
 
     // CART NUMBER
-
     printCartNumber();
 
     // SIDENAV
-
     $('#sideNav, #sideNavContent').hide();
     $('#hamburger a').click(function(e) {
         $('#sideNav').fadeIn('fast', function() {
@@ -77,10 +73,9 @@ $(document).ready(function() {
     });
 
     // SOCIAL
-
-    var socialLinks;
-
-    loadJson('socialLinks', function(output) {socialLinks = output;}, printSocialLinks);
+    loadJson('socialLinks', function(output) {
+        printSocialLinks(output);
+    });
 
     function printSocialLinks(data) {
         for(let i in data) {
@@ -89,7 +84,6 @@ $(document).ready(function() {
     }
 
     // SCROLL TO TOP
-
     $('body').append('<a href="#" id="toTop"><span class="arrow"></span></div>');
     $('#toTop').click(function(e) {
         $(document).scrollTop(0);
@@ -101,7 +95,6 @@ $(document).ready(function() {
     });
 
     // FORM SUBMIT ON ENTER
-
     $('.textField').keydown(function(e) {
         if(e.keyCode == 13) {
             e.preventDefault();
@@ -110,15 +103,13 @@ $(document).ready(function() {
 });
 
 // AJAX
-
-function loadJson(fileName, handleData, func) {
+function loadJson(fileName, func) {
     $.ajax({
         url: `assets/json/${fileName}.json`,
         method: "get",
         dataType: "json",
         success: function(data) {
-            handleData(data);
-            if(typeof(func) == 'function') func(data);
+            func(data);
         },
         error: function(errorMsg) {
             console.log(errorMsg);
@@ -143,7 +134,6 @@ function updateLocalStorage() {
 }
 
 // CART NUMBER
-
 function printCartNumber() {
     var numberOfDevices = 0;
     for(let i in cartDevices) {

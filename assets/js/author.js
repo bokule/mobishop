@@ -1,9 +1,8 @@
 $(document).ready(function() {
     // AUTHOR SOCIAL
-
-    var authorSocialLinks;
-
-    loadJson('authorSocialLinks', function(output) {authorSocialLinks = output;}, printAuthorSocialLinks);
+    loadJson('authorSocialLinks', function(output) {
+        printAuthorSocialLinks(output);
+    });
 
     function printAuthorSocialLinks(data) {
         for(let el of data) {
