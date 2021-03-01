@@ -1,25 +1,11 @@
-cartDevices = [];
+// ERROR HANDLING
+window.onerror = function(msg, url, line) {
+    console.log(`Error: ${msg}`);
+    console.log(`URL: ${url}`);
+    console.log(`On line: ${line}`);
+}
 
 $(document).ready(function() {
-    //LOCAL STORAGE
-    loadLocalStorage();
-
-    function loadLocalStorage() {
-        if(localStorage.length > 0) {
-            var cart = localStorage.getItem('cart');
-            cart = cart.split('\t');
-            for(let el of cart) {
-                var singleItem = el.split('\r');
-                cartDevices.push({
-                    "id": Number(singleItem[0]),
-                    "name": singleItem[1],
-                    "price": Number(singleItem[2]),
-                    "quantity": Number(singleItem[3])
-                });
-            }
-        }
-    }
-
     // NAV LINKS
     loadJson('pageLinks', function(output) {
         printPageLinks(output);
@@ -108,33 +94,29 @@ function loadJson(fileName, func) {
         url: `assets/json/${fileName}.json`,
         method: "get",
         dataType: "json",
-        success: function(data) {
-            func(data);
-        },
+        success: func,
         error: function(errorMsg) {
-            console.log(errorMsg);
+            console.error(errorMsg);
         }
     });
 }
 
 // LOCAL STORAGE
-function updateLocalStorage() {
-    if(cartDevices.length > 0) {
-        var text = '';
-        var attributes = ['id', 'name', 'price', 'quantity'];
-        for(let i in cartDevices) {
-            if(i != 0) text += '\t';
-            for(let j in attributes) {
-                if(j != 0) text += '\r';
-                text += `${cartDevices[i][attributes[j]]}`;
-            }
-        }
-        localStorage.setItem('cart', text);
-    } else localStorage.removeItem('cart');
+function loadLocalStorage(data) {
+    let cookie = [];
+    if(localStorage.getItem(data) != null) {
+        cookie = JSON.parse(localStorage.getItem(data));
+    }
+    return cookie;
+}
+
+function updateLocalStorage(data, cookie) {
+    localStorage.setItem(cookie, JSON.stringify(data));
 }
 
 // CART NUMBER
 function printCartNumber() {
+    let cartDevices = loadLocalStorage('cart');
     var numberOfDevices = 0;
     for(let i in cartDevices) {
         numberOfDevices += cartDevices[i].quantity;

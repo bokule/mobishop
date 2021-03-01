@@ -39,10 +39,6 @@ ul {
   margin-bottom: 50px;
 }
 
-.heading h2 {
-  font-family: 'PermanentMarker';
-}
-
 .heading .underline {
   width: 40px;
   border-bottom: 3px solid #ffd247;
@@ -352,8 +348,8 @@ ul {
 
 #filters {
   width: 20%;
-  padding: 10px;
-  border: 1px solid #919191;
+  padding: 15px;
+  background-color: #e6e6e6;
   border-radius: 5px;
   height: 0%;
 }
@@ -384,15 +380,6 @@ ul {
 
 #devicesContainer {
   width: 75%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  text-align: center;
 }
 
 #devicesContainer p {
@@ -411,12 +398,13 @@ ul {
   transition: .3s transform;
 }
 
-.device h2 {
+.device .deviceName {
   margin-bottom: 4px;
   word-wrap: break-word;
+  font-weight: bold;
 }
 
-.device span {
+.device .devicePrice {
   margin-bottom: 15px;
 }
 
@@ -481,6 +469,64 @@ ul {
   color: #fff;
 }
 
+.page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#paging {
+  width: 100%;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#paging ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#paging ul li a {
+  display: block;
+}
+
+.btnPage {
+  border-radius: 0px !important;
+}
+
+.activePage {
+  background-color: #cfaa38 !important;
+}
+
+.prevPage {
+  border-radius: 3px 0px 0px 3px !important;
+}
+
+.nextPage {
+  border-radius: 0px 3px 3px 0px !important;
+}
+
+.disabled {
+  opacity: 75%;
+  pointer-events: none !important;
+}
+
 #contactMain {
   padding: 130px 0;
 }
@@ -528,7 +574,7 @@ ul {
 
 .textField {
   padding: 3px;
-  border: 1px solid #919191;
+  border: 1px solid rgba(0, 0, 0, 0.7);
   border-radius: 3px;
 }
 
@@ -609,8 +655,8 @@ textarea {
 
 .modalContent button {
   position: absolute;
-  top: 0;
-  right: 7px;
+  top: 3px;
+  right: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -704,7 +750,7 @@ textarea {
 
 #cartList table {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   overflow: hidden;
 }
 

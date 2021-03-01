@@ -47,9 +47,6 @@ ul {
 .heading {
     text-align: center;
     margin-bottom: 50px;
-    h2 {
-        font-family: 'PermanentMarker';
-    }
     .underline {
         width: 40px;
         border-bottom: 3px solid $color-yellow;
@@ -115,7 +112,6 @@ ul {
 }
 
 // HEADER
-
 #header {
     background-color: $color-black;
     padding: 5px 0;
@@ -204,7 +200,6 @@ ul {
 }
 
 // SIDENAV
-
 #sideNav {
     position: fixed;
     top: 0;
@@ -236,7 +231,6 @@ ul {
 }
 
 // SLIDER
-
 #slider {
     height: 100vh;
     position: relative;
@@ -285,7 +279,6 @@ ul {
 }
 
 // ABOUT US
-
 #aboutUs {
     padding: 30px 0;
     .container {
@@ -315,7 +308,6 @@ ul {
 }
 
 // DEVICES MAIN
-
 #devicesMain {
     padding: 130px 0;
     .container {
@@ -326,8 +318,8 @@ ul {
 
 #filters {
     width: 20%;
-    padding: 10px;
-    border: 1px solid $color-grey;
+    padding: 15px;
+    background-color: $color-ltgrey;
     border-radius: 5px;
     height: 0%;
     form {
@@ -347,10 +339,6 @@ ul {
 
 #devicesContainer {
     width: 75%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-align: center;
     p {
         text-align: center;
     }
@@ -365,11 +353,12 @@ ul {
     margin-left: auto;
     margin-right: auto;
     transition: .3s transform;
-    h2 {
+    .deviceName {
         margin-bottom: 4px;
         word-wrap: break-word;
+        font-weight: bold;
     }
-    span {
+    .devicePrice {
         margin-bottom: 15px;
     }
     .btnAddToCart {
@@ -423,8 +412,52 @@ ul {
     }
 }
 
-// CONTACT MAIN
+// paging
+.page {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
+#paging {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        li {
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+.btnPage {
+    border-radius: 0px !important;
+}
+
+.activePage {
+    background-color: $color-darkyellow !important;
+}
+
+.prevPage {
+    border-radius: 3px 0px 0px 3px !important;
+}
+
+.nextPage {
+    border-radius: 0px 3px 3px 0px !important;
+}
+
+.disabled {
+    opacity: 75%;
+    pointer-events: none !important;
+}
+
+// CONTACT MAIN
 #contactMain {
     padding: 130px 0;
     .container {
@@ -464,7 +497,7 @@ ul {
 
 .textField {
     padding: 3px;
-    border: 1px solid $color-grey;
+    border: 1px solid $color-black-t;
     border-radius: 3px;
 }
 
@@ -532,8 +565,8 @@ textarea {
     }
     button {
         position: absolute;
-        top: 0;
-        right: 7px;
+        top: 3px;
+        right: 8px;
         background: none;
         border: none;
         cursor: pointer;
@@ -541,7 +574,6 @@ textarea {
 }
 
 // AUTHOR MAIN
-
 #authorMain {
     padding: 130px 0;
     .container {
@@ -592,7 +624,6 @@ textarea {
 }
 
 // CART
-
 #cartMain {
     padding: 130px 0;
     .container {
@@ -606,7 +637,7 @@ textarea {
     overflow: auto;
     table {
         width: 100%;
-        border-radius: 5px;
+        border-radius: 5px 5px 0 0;
         overflow: hidden;
         tr {
             text-align: center;
@@ -682,7 +713,6 @@ textarea {
 }
 
 // FOOTER
-
 #footer {
     background-color: $color-black;
     padding: 20px 0;
@@ -722,7 +752,6 @@ textarea {
 }
 
 // SCROLL TO TOP
-
 #toTop {
     width: 50px;
     height: 50px;
@@ -746,7 +775,6 @@ textarea {
 }
 
 // MEDIA QUERIES
-
 @media screen and (min-width: 1201px) {
     .device {
         &:hover {
@@ -761,7 +789,6 @@ textarea {
 
 @media screen and (max-width: 1200px) {
     // DEVICES
-
     #filters {
         width: 25%;
     }
@@ -778,7 +805,6 @@ textarea {
     }
 
     // CONTACT
-
     #contactForm {
         form {
             width: 100%;
@@ -788,7 +814,6 @@ textarea {
 
 @media screen and (max-width: 992px) {
     // ABOUT US
-
     #aboutUs {
         .container {
             flex-direction: column;
@@ -805,7 +830,6 @@ textarea {
     }
 
     // DEVICES
-
     #devicesMain {
         .container {
             flex-direction: column;
@@ -823,7 +847,6 @@ textarea {
     }
 
     // CONTACT
-
     #contactMain {
         padding: 95px 0;
         .container {
@@ -845,7 +868,6 @@ textarea {
     }
 
     // AUTHOR
-
     #authorMain {
         .container {
             flex-direction: column;
@@ -866,7 +888,6 @@ textarea {
     }
 
     // CART
-
     #cartMain {
         padding: 90px 0;
         .container {
@@ -910,7 +931,6 @@ textarea {
     }
 
     // HEADER
-
     #logo {
         width: 100px;
     }
@@ -924,31 +944,26 @@ textarea {
     }
 
     // SLIDER
-
     #sliderText {
         text-align: center;
     }
 
     // DEVICES
-
     #devicesMain {
         padding: 90px 0px;
     }
 
     // CONTACT
-
     .contactCol {
         width: 70%;
     }
 
     // AUTHOR
-
     #authorMain {
         padding: 90px 0;
     }
 
     // CART
-
     #cartMain {
         padding: 90px 0;
     }
@@ -956,7 +971,6 @@ textarea {
 
 @media screen and (max-width: 576px) {
     // ABOUT US
-
     #aboutUsImage {
         width: 70%;
     }
@@ -966,19 +980,16 @@ textarea {
     }
 
     // DEVICES
-
     .device {
         width: 80%;
     }
 
     // CONTACT
-
     .contactCol {
         width: 90%;
     }
 
     // AUTHOR
-
     #authorImage {
         width: 80%;
     }
@@ -988,7 +999,6 @@ textarea {
     }
 
     // FOOTER
-
     #footer {
         .container {
             flex-direction: column;
@@ -1011,7 +1021,6 @@ textarea {
     }
 
     // TO TOP
-
     #toTop {
         right: 25px;
         bottom: 25px;

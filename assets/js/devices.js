@@ -1,23 +1,6 @@
 $(document).ready(function() {
-    // SORT ORDER
-    loadJson('sortOrder', function(output) {
-        fillSortOrderDdl(output);
-    });
-    
-    var $ddlSortOrder = $('#ddlOrder');
-    $ddlSortOrder.append('<option value="0">Sort Order</option>');
-
-    function fillSortOrderDdl(data) {
-        for(let el of data) {
-            $ddlSortOrder.append(`<option value="${el.id}">${el.name}</option>`);
-        }
-    }
-
     // CBECKBOX GROUPS
-    var operatingSystems;
-
     loadJson('operatingSystems', function(output) {
-        operatingSystems = output;
         fillChbGroup('OS', output, 'chbOS');
     });
 
@@ -65,35 +48,64 @@ $(document).ready(function() {
         data = priceRangeFilter(data);
 
         // PRINTING
-        $('#devicesContainer').html('');
+        let html = '';
         if(data.length == 0) {
-            $('#devicesContainer').html('<p class="font-large">Oops. Seems like there are no items that match your search criteria.</p>')
+            html = '<p class="font-large">Oops. Seems like there are no items that match your search criteria.</p>';
         } else {
-            for(let el of data) {
-                $('#devicesContainer').append(`<div class="device"><div class="deviceImage"><img src="assets/img/${el.image}" alt="${el.name}"/></div><div class="deviceText"><h2 class="font-medium deviceName">${el.name}</h2><span class="font-medium">${el.price}€</span><div class="textCenter"><button class="font-small btnPrimary btnAddToCart"><i class="fas fa-shopping-cart font-medium"></i>+</button></div></div></div>`);
+            let devicesPerPage = 6;
+            let currentDevice = 0;
+            let pageNumber = 1;
+            for(let i in data) {
+                currentDevice++;
+                if(currentDevice > devicesPerPage) currentDevice = 1;
+                // PAGE BEGINNING
+                if(currentDevice == 1) {
+                    html += `<div id='page${pageNumber}' class='page'>`;
+                }
+                // DEVICES
+                html+= `<div class="device"><div class="deviceImage"><img src="assets/img/${data[i].image}" alt="${data[i].name}"/></div><div class="deviceText"><label class="font-medium deviceName">${data[i].name}</label><label class="font-medium devicePrice">${data[i].price}€</label><div class="textCenter"><button class="font-small btnPrimary btnAddToCart" data-id="${data[i].id}"><i class="fas fa-shopping-cart font-medium"></i>+</button></div></div></div>`;
+                // PAGE END
+                if(currentDevice == devicesPerPage || i == data.length - 1) {
+                    html += "</div>";
+                    pageNumber++;
+                }
             }
-            $('.btnAddToCart').click(function() {
-                addToCart(this);
-            });
+            // PAGE NAVIGATION
+            html += "<div id='paging'><ul class='font-small'><li><a href='#' class='btnPrimary prevPage'><</a></li>";
+            for(let i = 1; i < pageNumber; i++) {
+                html += `<li><a class='btnPrimary btnPage' data-page='${i}'>${i}</a></li>`;
+            }
+            html += "<li><a href='#' class='btnPrimary nextPage'>></a></li></ul></div>";
         }
+        $('#devicesContainer').html(html);
+		// ADD TO CART EVENT
+        $('.btnAddToCart').click(function() {
+            addToCart(this);
+        });
+		enablePaging();
     }
 
     // SEARCH
     function searchFilter(data) {
-        data = data.filter(function(el) {
-            if(el.name.toUpperCase().indexOf($('#tbSearch').val().trim().toUpperCase()) != -1) return el;
-        });
-        return data;
+        try {
+            data = data.filter(function(el) {
+                if(el.name.toUpperCase().indexOf($('#tbSearch').val().trim().toUpperCase()) != -1) return el;
+            });
+            return data;
+        } catch(ex) {
+            console.error(ex.description);
+        }
     }
 
     // SORT ORDER
     function sortOrderFilter(data) {
-        if($ddlSortOrder.prop('selectedIndex') != 0) {
-            if($ddlSortOrder.val() == 1) {
-                data = sortFunction(data, 'brand', false);
-            } else if($ddlSortOrder.val() == 2) {
-                data = sortFunction(data, 'brand', true);
-            } else if($ddlSortOrder.val() == 3) {
+        let $ddlSortOrder = $('#ddlOrder');
+        if($ddlSortOrder.prop('selectedIndex') != '0') {
+            if($ddlSortOrder.val() == 'nameAZ') {
+                data = sortFunction(data, 'name', false);
+            } else if($ddlSortOrder.val() == 'nameZA') {
+                data = sortFunction(data, 'name', true);
+            } else if($ddlSortOrder.val() == 'priceASC') {
                 data = sortFunction(data, 'price', false);
             } else {
                 data = sortFunction(data, 'price', true);
@@ -110,19 +122,9 @@ $(document).ready(function() {
             y = 1;
         }
         arr.sort(function(a, b) {
-            if(attr == 'brand') {
-                for(let el of brands) {
-                    if(a.brand == el.id) a = el.name;
-                    if(b.brand == el.id) b = el.name;
-                }
-                if(a > b) return x;
-                else if(a < b) return y;
-                else return 0;
-            } else {
-                if(a[attr] > b[attr]) return x;
-                else if(a[attr] < b[attr]) return y;
-                else return 0;
-            }
+            if(a[attr] > b[attr]) return x;
+            else if(a[attr] < b[attr]) return y;
+            else return 0;
         });
 
         return arr;
@@ -165,11 +167,12 @@ $(document).ready(function() {
     // ADDING TO CART
 
     function addToCart(btn) {
-        var deviceName = $(btn).parent().siblings('.deviceName').html();
+        let cartDevices = loadLocalStorage('cart');
+        var deviceId = parseInt($(btn).data('id'));
         var isInCart = false;
         var index;
         for(let i in cartDevices) {
-            if(deviceName == cartDevices[i].name) {
+            if(deviceId == cartDevices[i].id) {
                 index = i;
                 isInCart = true;
                 break;
@@ -178,25 +181,25 @@ $(document).ready(function() {
         if(isInCart) {
             if(cartDevices[index].quantity < 10) {
                 cartDevices[index].quantity++;
-                updateLocalStorage();
-                successfullyAddedModal()
+                updateLocalStorage(cartDevices, 'cart');
+                successfullyAddedModal();
             }
             else cannotAddModal();
         } else {
             for(let i in devices) {
-                if(devices[i].name == deviceName) {
+                if(devices[i].id == deviceId) {
                     index = i;
                     break;
                 }
             }
             cartDevices.push({
                 "id": devices[index].id,
-                "name": deviceName,
+                "name": devices[index].name,
                 "price": devices[index].price,
                 "quantity": 1
             });
-            updateLocalStorage();
-            successfullyAddedModal()
+            updateLocalStorage(cartDevices, 'cart');
+            successfullyAddedModal();
         }
         printCartNumber();
     }
@@ -220,5 +223,42 @@ $(document).ready(function() {
     function cannotAddModal() {
         var modal = $("<div class='addToCartModal'><div class='addToCartModalContent cannotAdd'><p class='font-small'>You can't have more than 10 of the same device in your cart.</p></div></div>");
         addToCartModal(modal);
+    }
+	
+	// PAGING
+    var currentPage;
+    enablePaging();
+
+    function enablePaging() {
+        currentPage = 1;
+        $('.page:not(:first)').hide();
+        $('.btnPage:first').addClass('activePage');
+        $('.prevPage').addClass('disabled');
+        if($('.page').length == 1) $('.nextPage').addClass('disabled');
+        $('#paging a').click(function(e) {
+            e.preventDefault();
+            if(!$(this).hasClass('disabled')) {
+                if($(this).hasClass('prevPage') || $(this).hasClass('nextPage')) {
+                    if($(this).hasClass('prevPage')) {
+                        if(currentPage > 1) currentPage--;
+                    }
+                    else if(currentPage < $('.page').length) currentPage++;
+                    $('.page').hide();
+                    $(`#page${currentPage}`).show();
+                    $('.btnPage').removeClass('activePage').eq(currentPage - 1).addClass('activePage');
+                } else {
+                    let page = $(this).data('page');
+                    $('.page').hide();
+                    $(`#page${page}`).show();
+                    $('.btnPage').removeClass('activePage');
+                    $(this).addClass('activePage');
+                    currentPage = page;
+                }
+                if(currentPage == 1) $('.prevPage').addClass('disabled');
+                else $('.prevPage').removeClass('disabled');
+                if(currentPage == $('.page').length) $('.nextPage').addClass('disabled');
+                else $('.nextPage').removeClass('disabled');
+            }
+        });
     }
 });

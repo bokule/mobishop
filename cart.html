@@ -66,23 +66,23 @@
                         <div class="formGroup">
                             <label for="tbName" class="font-small">Full name:</label>
                             <input type="text" name="tbName" id="tbName" class="textField font-small" autocomplete="off"/>
-                            <span class="errorMessage">
+                            <label class="errorMessage">
                                 <ul class="font-small">
                                     <li>- A name cannot have less than 3 characters</li>
                                     <li>- Has to be at least 2 words</li>
                                     <li>- Each word must be capitalized</li>
                                 </ul>
-                            </span>
+                            </label>
                         </div>
                         <div class="formGroup">
                             <label for="tbEmail" class="font-small">Email:</label>
-                            <input type="text" name="tbEmail" id="tbEmail" class="textField font-small" autocomplete="off"/>
-                            <span class="errorMessage font-small">examplename@example.com</span>
+                            <input type="email" name="tbEmail" id="tbEmail" class="textField font-small" autocomplete="off"/>
+                            <label class="errorMessage font-small">examplename@example.com</label>
                         </div>
                         <div class="formGroup">
                             <label for="tbAddress" class="font-small">Address:</label>
                             <input type="text" name="tbAddress" id="tbAddress" class="textField font-small" autocomplete="off"/>
-                            <span class="errorMessage font-small">[Street Name] [Home Number]/[Apartment Number]</span>
+                            <label class="errorMessage font-small">[Street Name] [Home Number]/[Apartment Number]</label>
                         </div>
                     </form>
                     <br/>
@@ -107,7 +107,7 @@
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
-        <script type="text/javascript" src="assets/js/formValidation.js"></script>
+        <script type="text/javascript" src="assets/js/form-validation.js"></script>
         <script type="text/javascript" src="assets/js/cart.js"></script>
     </body>
 </html>

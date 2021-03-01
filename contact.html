@@ -72,22 +72,22 @@
                         <div class="formGroup">
                             <label for="tbEmail" class="font-small">Email:</label>
                             <input type="email" name="tbEmail" id="tbEmail" class="font-small textField" autocomplete="off"/>
-                            <span class="errorMessage font-small">examplename@example.com</span>
+                            <label class="errorMessage font-small">examplename@example.com</label>
                         </div>
                         <div class="formGroup">
                             <label for="tbName" class="font-small">Name:</label>
                             <input type="text" name="tbName" id="tbName" class="font-small textField" autocomplete="off"/>
-                            <span class="errorMessage font-small">
+                            <label class="errorMessage font-small">
                                 <ul>
                                     <li>- A name cannot have less than 3 characters</li>
                                     <li>- Each word of your name must be capitalized</li>
                                 </ul>
-                            </span>
+                            </label>
                         </div>
                         <div class="formGroup">
                             <label for="tbMessage" class="font-small">Message:</label>
                             <textarea name="tbMessage" id="tbMessage" cols="30" rows="10" class="font-small textField"></textarea>
-                            <span class="errorMessage font-small">Your message (without spacing characters) cannot be shorter than 20 characters.</span>
+                            <label class="errorMessage font-small">Your message (without spacing characters) cannot be shorter than 20 characters.</label>
                         </div>
                         <span class="textCenter">
                             <button name="btnSend" id="btnSend" class="btnPrimary">
@@ -113,7 +113,7 @@
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
-        <script type="text/javascript" src="assets/js/formValidation.js"></script>
+        <script type="text/javascript" src="assets/js/form-validation.js"></script>
         <script type="text/javascript" src="assets/js/contact.js"></script>
     </body>
 </html>

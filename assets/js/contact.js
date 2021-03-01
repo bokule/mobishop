@@ -9,7 +9,7 @@ $(document).ready(function() {
     }
 
     // EMAIl
-    var regExpEmail = /^[a-z-_\.]+@([\w-_]{2,}\.)+[a-z]{2,}$/;
+    var regExpEmail = /^[a-z][a-z0-9-_\.]{2,}@([a-z0-9-_]{2,}\.)+[a-z]{2,}$/;
     var $tbEmail = $('#tbEmail');
     $tbEmail.blur(checkEmail);
     function checkEmail() {
@@ -31,8 +31,8 @@ $(document).ready(function() {
     // FORM SUBMITION
     var checkFunctions = [checkName, checkEmail, checkMessage];
     var successMessage = 'Sent! Expect an answer from one of our agents soon.';
-    $('#btnSend').click(function() {
-        submitForm(checkFunctions, successMessage, $('#contactForm form'));
-        return false;
+    $('#btnSend').click(function(e) {
+        submitForm(checkFunctions, $('#contactForm form'), successMessage);
+		e.preventDefault();
     });
 });
